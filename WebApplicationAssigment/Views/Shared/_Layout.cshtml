@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="content-wrapper">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> 
+                <img src="https://www.jejjcop.se/wp-content/uploads/2018/10/jejjcop_web_solutions_logo.svg" alt="logo image" width="300" height="150"></a>
+                <div class="navbar-list">
+                    <ul class="navbar-contents">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="body">
+
+        <section class="content-wrapper main-content clear-fix">
+
+            @RenderBody()
+
+        </section>
+    </div>
+
+    <footer>
+        <div class="content-wrapper">
+            <p> &copy; @DateTime.Now.ToShortDateString() Sinead Jacobsson </p>
+        </div>
+    </footer>
+
+    
+
+</body>
+
+</html>
