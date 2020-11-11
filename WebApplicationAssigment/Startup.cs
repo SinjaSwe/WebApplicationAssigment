@@ -15,7 +15,7 @@ namespace WebApplicationAssigment
           public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(); //IMPORTANT TO ADD MANUALLY  
-            services.AddControllersWithViews();
+            //services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
@@ -33,7 +33,11 @@ namespace WebApplicationAssigment
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute(); //IMPORTANT TO ADD MANUALLY
+                endpoints.MapControllerRoute(
+                name: "tempCheck",
+                pattern: "{controller=Temp}/{action=TemperatureCheck}/{id?}");
+
+                                endpoints.MapDefaultControllerRoute(); //IMPORTANT TO ADD MANUALLY
                 endpoints.MapRazorPages();
             });
         }

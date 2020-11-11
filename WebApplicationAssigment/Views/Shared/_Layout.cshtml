@@ -13,20 +13,27 @@
 <body>
 
     <header>
-        <nav>
-            <div class="content-wrapper">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> 
-                <img src="https://www.jejjcop.se/wp-content/uploads/2018/10/jejjcop_web_solutions_logo.svg" alt="logo image" width="300" height="150"></a>
-                <div class="navbar-list">
-                    <ul class="navbar-contents">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
-                    </ul>
-                </div>
+
+        <div class="container">
+            <div class="logo">
+                <img src="https://www.jejjcop.se/wp-content/uploads/2018/10/jejjcop_web_solutions_logo.svg" alt="" width="300" />
             </div>
-        </nav>
+            <nav>
+                <ul>
+                    <li class="nav-item active"><a href="#" class="nav-link">Home <span class="sr-only"></span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <hr />
+
+
+        
+
+
+
     </header>
 
     <div id="body">
