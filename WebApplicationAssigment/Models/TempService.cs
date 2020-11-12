@@ -10,7 +10,7 @@ namespace WebApplicationAssigment.Models
         {
             if (temperature < 38)
             {
-                return "Relax, you do not have Covid 19";
+                return "Relax, have some hot whiskey, you do not have Covid 19";
             }
 
             else

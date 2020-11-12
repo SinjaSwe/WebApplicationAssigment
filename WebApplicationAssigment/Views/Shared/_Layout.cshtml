@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 
-
 <html lang="en">
 
 <head>
@@ -13,27 +12,20 @@
 <body>
 
     <header>
-
         <div class="container">
             <div class="logo">
                 <img src="https://www.jejjcop.se/wp-content/uploads/2018/10/jejjcop_web_solutions_logo.svg" alt="" width="300" />
             </div>
             <nav>
                 <ul>
-                    <li class="nav-item active"><a href="#" class="nav-link">Home <span class="sr-only"></span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Covid Test", "TempChecker", "Tool")</li>                    
                 </ul>
             </nav>
         </div>
-        <hr />
-
-
-        
-
-
-
+        <hr />  
     </header>
 
     <div id="body">

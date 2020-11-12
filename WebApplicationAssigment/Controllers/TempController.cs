@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +19,13 @@ namespace WebApplicationAssigment.Controllers
             return View();
         }
 
-        [HttpGet] 
-        public IActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost] //get the info from the form
         //[ValidateAntiForgeryToken] // to protect against hackers
         [Route ("/tempCheck")]
         public IActionResult TempChecker (int temperature)
         {
-           
+            ViewBag.TempResult = TempService.CheckTemperature(temperature);
+            return View(); 
         }
 
 

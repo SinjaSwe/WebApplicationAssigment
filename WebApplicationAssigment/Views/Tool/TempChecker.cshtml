@@ -1,18 +1,21 @@
-﻿@model WebApplicationAssigment.Models.TempService
-
-
+﻿
 @{
-    ViewBag.Title = " Check Temperature";
+    ViewBag.Title = "TempChecker";
 }
+
+@model WebApplicationAssigment.Models.TempService
+
+
 
 <b>Temperature:</b>
 
-<h2>Are you feeling unwell? Concerned you have Covid19?</h2>
+<h2>Are you feeling unwell? Concerned you have Covid 19?</h2>
 
 <p>Please input your tempature below</p>
 
 
-<form asp-action="TempChecker" method="post"> //use this for both number and temp 
+<form asp-action="TempChecker" method="post">
+    //use this for both number and temp
     <label asp-for="Temperature"></label>
     <input asp-for="Temperature" />
 
@@ -29,7 +32,6 @@
     {
         @ViewBag.TemperatureResult
     }
-
 </tbody>
 
 
