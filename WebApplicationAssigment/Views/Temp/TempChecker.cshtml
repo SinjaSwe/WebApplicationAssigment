@@ -7,30 +7,24 @@
 
 
 
-<b>Temperature:</b>
-
-<h2>Are you feeling unwell? Concerned you have Covid 19?</h2>
+<h3>Are you feeling unwell? Concerned you have Covid 19?</h3>
 
 <p>Please input your tempature below</p>
 
 
 <form asp-action="TempChecker" method="post">
-    //use this for both number and temp
+    
     <label asp-for="Temperature"></label>
     <input asp-for="Temperature" />
 
-    <input type="submit" value="TempChecker" />
-
-    <input type="number" name="temperature" />
+    <input type="submit" value="Check" />
 
 </form>
 
-}
-
 <tbody>
-    @if (ViewBag.TemperatureResult != null)
+    @if (ViewBag.TempResult != null)
     {
-        @ViewBag.TemperatureResult
+        @ViewBag.TempResult
     }
 </tbody>
 

@@ -37,6 +37,10 @@ namespace WebApplicationAssigment
                 name: "tempCheck",
                 pattern: "{controller=Temp}/{action=TemperatureCheck}/{id?}");
 
+                endpoints.MapControllerRoute(
+                name: "guessGame",
+                pattern: "{controller=Guess}/{action=GuessGame}/{id?}");                
+
                 endpoints.MapDefaultControllerRoute(); //IMPORTANT TO ADD MANUALLY
                 endpoints.MapRazorPages();
             });

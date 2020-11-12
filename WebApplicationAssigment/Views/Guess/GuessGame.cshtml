@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "GuessGame";
+}
+
+<b>Feeling lucky?:</b>
+
+<h2>Want to have some fun? Try to guess a randomly selected number between 1 and 100</h2>
+
+<p>Please input your guess below</p>
+
+<form asp-action="TempChecker" method="post">
+    //use this for both number and temp
+    <label asp-for="Guess"></label>
+    <input asp-for="Guess" />
+
+    <input type="submit" value="GuessChecker" />
+
+    <input type="number" name="guess" />
+
+</form>
+
