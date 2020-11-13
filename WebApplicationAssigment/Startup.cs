@@ -14,6 +14,14 @@ namespace WebApplicationAssigment
     {
           public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".RandomNumber.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.IsEssential = true;
+            });
             services.AddMvc(); //IMPORTANT TO ADD MANUALLY  
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -28,18 +36,18 @@ namespace WebApplicationAssigment
 
             app.UseHttpsRedirection();//IMPORTANT TO ADD MANUALLY
             app.UseStaticFiles();
-           
-            app.UseRouting();            
+            app.UseRouting();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                 name: "tempCheck",
-                pattern: "{controller=Temp}/{action=TemperatureCheck}/{id?}");
+                pattern: "{controller=Temp}/{action=TempChecker}/{id?}");
 
                 endpoints.MapControllerRoute(
                 name: "guessGame",
-                pattern: "{controller=Guess}/{action=GuessGame}/{id?}");                
+                pattern: "{controller=Guess}/{action=GuessingGame}/{id?}");                
 
                 endpoints.MapDefaultControllerRoute(); //IMPORTANT TO ADD MANUALLY
                 endpoints.MapRazorPages();
