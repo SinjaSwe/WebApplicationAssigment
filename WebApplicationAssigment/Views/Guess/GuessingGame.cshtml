@@ -1,22 +1,25 @@
-﻿
-@{
-    ViewBag.Title = "GuessGame";
+﻿@{
+    ViewData["Title"] = "GuessingGame";
 }
-
-<b>Feeling lucky?:</b>
 
 <h2>Want to have some fun? Try to guess a randomly selected number between 1 and 100</h2>
 
 <p>Please input your guess below</p>
 
-<form asp-action="TempChecker" method="post">
-    //use this for both number and temp
-    <label asp-for="Guess"></label>
-    <input asp-for="Guess" />
+<form asp-action="EnterGuess" method="post">
+    <label for="guess">Guess:</label>
+    <input id="guess" name="guess" type="number" />
 
-    <input type="submit" value="GuessChecker" />
-
-    <input type="number" name="guess" />
-
+    <input type="submit" value="Submit Number" />
 </form>
 
+
+if (ViewBag.Memo !=null)
+{
+<h3> @(ViewBag.GuessingGame as )</h3>
+<a asp-controller="Home" asp-action="GuessingGame">Submit a guess </a>
+}
+else
+{
+<a asp-controller="Home" asp-action="GuessingGame">Play Guessing Game! </a>
+}

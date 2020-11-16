@@ -14,30 +14,30 @@ namespace WebApplicationAssigment.Controllers
         public string SessionKeyNumberToGuess = "_NumberToGuess"; 
         public string SessionInfo_NumbertoGuess { get; private set; }
 
-        public IActionResult GuessGame()
+        
+
+        public IActionResult GuessingGame()
         {
-            return View();
+            ViewBag.Guess = HttpContext.Session.GetString("Guess");
+
+            return View("GuessingGame");
         }
 
         [HttpGet]
         [Route("/guessGame")]
-        public IActionResult GuessingGame(int guess)
+        public IActionResult EnterGuess()
         {
-            int? numberToGuess = HttpContext.Session.GetInt32("_NumbertoGuess"); //must have ? https://stackoverflow.com/questions/16798269/cannot-implicitly-convert-type-int-to-int
-
-            GuessingGame guessingGame = GuessingGameService.CheckGuess(guess, numberToGuess);
-
-            HttpContext.Session.SetInt32("_NumbertoGuess", guessingGame.NumberToGuess);
-        }                       
-
+            HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101)); 
+            return View(); 
+        }            
 
         [HttpPost] //get the info from the form                  
         [Route("/guessGame")]
         
         public IActionResult GuessingGame(int guess)
         {
-            ViewBag.TempResult = GuessingGameService.CheckGuess(numberToGuess);
-            return View();
+            HttpContext.Session.SetInt32("Guess", guess);
+            return RedirectToAction(nameof(GuessingGame));            
         }
 }
         

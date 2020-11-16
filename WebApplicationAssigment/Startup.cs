@@ -34,9 +34,16 @@ namespace WebApplicationAssigment
                 app.UseDeveloperExceptionPage();
             }
 
+            else
+            {
+                app.UseHsts(); 
+            }
+
             app.UseHttpsRedirection();//IMPORTANT TO ADD MANUALLY
             app.UseStaticFiles();
+
             app.UseRouting();
+
             app.UseSession();
 
             app.UseEndpoints(endpoints =>
@@ -44,6 +51,7 @@ namespace WebApplicationAssigment
                 endpoints.MapControllerRoute(
                 name: "tempCheck",
                 pattern: "{controller=Temp}/{action=TempChecker}/{id?}");
+
 
                 endpoints.MapControllerRoute(
                 name: "guessGame",

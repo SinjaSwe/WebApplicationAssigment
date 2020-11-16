@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebApplicationAssigment.Models
 {
@@ -9,7 +11,7 @@ namespace WebApplicationAssigment.Models
         {                                              
             if (numberToGuess == guess)
             {
-                Console.WriteLine("You have guessed correctly");
+                return "You have guessed correctly";
             }
 
             else if (numberToGuess > guess)
@@ -22,9 +24,6 @@ namespace WebApplicationAssigment.Models
                 return "Try a higher number"; 
             }
         }
-
-
-
     }
 }
 
