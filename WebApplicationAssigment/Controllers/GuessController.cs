@@ -27,7 +27,10 @@ namespace WebApplicationAssigment.Controllers
         [Route("/guessGame")]
         public IActionResult EnterGuess()
         {
-            HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101)); 
+            if (HttpContext.Session.GetInt32("numberToGuess") == null)
+            {
+                HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101));
+            }
             return View(); 
         }            
 
@@ -35,9 +38,23 @@ namespace WebApplicationAssigment.Controllers
         [Route("/guessGame")]
         
         public IActionResult GuessingGame(int guess)
+
         {
-            HttpContext.Session.SetInt32("Guess", guess);
-            return RedirectToAction(nameof(GuessingGame));            
+            if (HttpContext.Session.GetInt32("numberToGuess") == null)
+            {
+                HttpContext.Session.SetInt32("guess", new Random().Next(1, 101));
+            }
+
+            int numberToGuess = (int)HttpContext.Session.GetInt32("numberToGuess");
+
+            ViewBag.number = GuessingGameService.CheckGuess(guess, numberToGuess);
+
+            if (numberToGuess == guess)
+            {
+                HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101));
+            }
+
+            return View();
         }
 }
         

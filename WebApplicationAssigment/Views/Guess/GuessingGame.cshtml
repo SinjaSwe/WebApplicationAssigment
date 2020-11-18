@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "GuessingGame";
+    ViewBag.Title = "GuessingGame";
 }
 
 <h2>Want to have some fun? Try to guess a randomly selected number between 1 and 100</h2>
@@ -14,12 +14,12 @@
 </form>
 
 
-if (ViewBag.Memo !=null)
+@if (ViewBag.guess != null)
 {
-<h3> @(ViewBag.GuessingGame as )</h3>
-<a asp-controller="Home" asp-action="GuessingGame">Submit a guess </a>
+    <h3> (@ViewBag.GuessingGame as )</h3>
+    <a asp-controller="Home" asp-action="GuessingGame">Submit a guess </a>
 }
 else
 {
-<a asp-controller="Home" asp-action="GuessingGame">Play Guessing Game! </a>
+    <a asp-controller="Home" asp-action="GuessingGame">Play Guessing Game! </a>
 }
