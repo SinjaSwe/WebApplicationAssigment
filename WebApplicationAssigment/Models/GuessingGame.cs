@@ -6,13 +6,16 @@ namespace WebApplicationAssigment.Models
     public class GuessingGame
     {
         public int Guess { get; set; }
-        public int NumberToGuess { get; set; }
 
-        //Random generator = new Random();
-        //int numberToGuess = generator.Next(1, 100);
-         
+        public static int CreateRandomNumber()
+        {
+            int numberToGuess = 0;
 
+            Random random = new Random();
+            numberToGuess = random.Next(1, 100);
 
+            return numberToGuess;
+        }
     }
 }
 

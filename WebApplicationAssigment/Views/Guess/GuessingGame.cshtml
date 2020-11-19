@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebApplicationAssigment.Models.GuessingGame;
+
+@{
     ViewBag.Title = "GuessingGame";
 }
 
@@ -6,20 +8,20 @@
 
 <p>Please input your guess below</p>
 
-<form asp-action="EnterGuess" method="post">
+<form asp-action="GuessingGame" method="post">
     <label for="guess">Guess:</label>
     <input id="guess" name="guess" type="number" />
 
     <input type="submit" value="Submit Number" />
 </form>
 
+@ViewBag.GuessingGame;
 
-@if (ViewBag.guess != null)
-{
-    <h3> (@ViewBag.GuessingGame as )</h3>
-    <a asp-controller="Home" asp-action="GuessingGame">Submit a guess </a>
-}
-else
-{
-    <a asp-controller="Home" asp-action="GuessingGame">Play Guessing Game! </a>
-}
+<tbody>
+    @if (ViewBag.Result != null)
+    {
+        <p>@ViewBag.Result</p>
+        <p>Guess:@ViewBag.Guess</p>
+        <p>Generated Number:@ViewBag.RandomNumber</p>
+    }
+</tbody>

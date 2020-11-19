@@ -10,26 +10,17 @@ using WebApplicationAssigment.Models;
 namespace WebApplicationAssigment.Controllers
 {
     public class GuessController : Controller
-    {
-        public string SessionKeyNumberToGuess = "_NumberToGuess"; 
-        public string SessionInfo_NumbertoGuess { get; private set; }
-
-        
-
-        public IActionResult GuessingGame()
-        {
-            ViewBag.Guess = HttpContext.Session.GetString("Guess");
-
-            return View("GuessingGame");
-        }
-
+    {            
         [HttpGet]
         [Route("/guessGame")]
-        public IActionResult EnterGuess()
+        public IActionResult GuessingGame()
         {
-            if (HttpContext.Session.GetInt32("numberToGuess") == null)
+            if (HttpContext.Session.GetString("View") != null && (HttpContext.Session.GetString("View")).CompareTo("Guess/CreateRandomNumber/Post")==0) 
             {
-                HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101));
+                ViewBag.Result = HttpContext.Session.GetString("Result");
+                ViewBag.UserGuess = HttpContext.Session.GetInt32("UserGuess");
+                ViewBag.GeneratedNumber = HttpContext.Session.GetInt32("RandomNumber");
+
             }
             return View(); 
         }            
@@ -38,31 +29,22 @@ namespace WebApplicationAssigment.Controllers
         [Route("/guessGame")]
         
         public IActionResult GuessingGame(int guess)
-
         {
-            if (HttpContext.Session.GetInt32("numberToGuess") == null)
-            {
-                HttpContext.Session.SetInt32("guess", new Random().Next(1, 101));
-            }
+            int numberToGuess = Convert.ToInt32(HttpContext.Session.GetInt32("RandomNumber"));
+            String result = GuessingGameService.CheckGuess(guess, numberToGuess);
 
-            int numberToGuess = (int)HttpContext.Session.GetInt32("numberToGuess");
+            HttpContext.Session.SetString("Result", result);
+            HttpContext.Session.SetInt32("Guess", guess);
 
-            ViewBag.number = GuessingGameService.CheckGuess(guess, numberToGuess);
+            HttpContext.Session.SetString("View", "Guess/RandomNumber/Post");
 
-            if (numberToGuess == guess)
-            {
-                HttpContext.Session.SetInt32("numberToGuess", new Random().Next(1, 101));
-            }
-
-            return View();
+            return RedirectToAction(nameof(GuessingGame));
         }
+
+        
+
 }
         
 
-
-
-
-
-
-       
+          
 }
