@@ -10,47 +10,46 @@ using WebApplicationAssigment.Models;
 namespace WebApplicationAssigment.Controllers
 {
     public class GuessController : Controller
-    {            
+    {
         [HttpGet]
         [Route("/guessGame")]
         public IActionResult GuessingGame()
         {
-            if (HttpContext.Session.GetString("View") != null && (HttpContext.Session.GetString("View")).CompareTo("Guess/CreateRandomNumber/Post") == 0)
+            if (HttpContext.Session.GetString("NumberToGuess") == null)
             {
-                ViewBag.Result = HttpContext.Session.GetString("Result");
-                ViewBag.UserGuess = HttpContext.Session.GetInt32("Guess");
-                ViewBag.GeneratedNumber = HttpContext.Session.GetInt32("NumberToGuess");
-            }
-
-            else
-            {
-
                 int numberToGuess = GuessingGameService.CreateRandomNumber();
                 HttpContext.Session.SetInt32("NumberToGuess", numberToGuess);
             }
 
-            return View(); 
-        }            
+            return View();
+        }
 
         [HttpPost] //get the info from the form                  
         [Route("/guessGame")]
-        
+
         public IActionResult GuessingGame(int guess)
         {
             int numberToGuess = Convert.ToInt32(HttpContext.Session.GetInt32("NumberToGuess"));
+
+            if (numberToGuess == 0)
+            {
+                return RedirectToAction(nameof(GuessingGame)); //Gen a new no
+            }
+
             String result = GuessingGameService.CheckGuess(guess, numberToGuess);
 
-            HttpContext.Session.SetString("Result", result);
-            HttpContext.Session.SetInt32("Guess", guess);
-            HttpContext.Session.SetString("View", "Guess/NumberToGuess/Post");
+            ViewBag.Result = result;
+            ViewBag.Guess = guess;
+            ViewBag.NumberToGuess = numberToGuess;
 
-            return RedirectToAction(nameof(GuessingGame));
+            return View();
+
         }
 
-        
 
-}
-        
 
-          
+    }
+
+
+
 }

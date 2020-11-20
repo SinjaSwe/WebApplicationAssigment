@@ -10,7 +10,7 @@
 
 <form asp-action="GuessingGame" method="post">
     <label for="guess">Guess:</label>
-    <input id="guess" name="guess" type="number" />
+    <input id="guess" name="guess" type="number" value="@ViewBag.Guess"/>
 
     <input type="submit" value="Submit Number" />
 </form>
@@ -22,6 +22,6 @@
     {
         <p>@ViewBag.Result</p>
         <p>Guess:@ViewBag.Guess</p>
-        <p>NumberToGuess:@ViewBag.NumberToGuess</p>
+        //<p>NumberToGuess:@ViewBag.NumberToGuess</p>
     }
 </div>

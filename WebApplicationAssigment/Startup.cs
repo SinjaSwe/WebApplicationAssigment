@@ -19,7 +19,7 @@ namespace WebApplicationAssigment
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".RandomNumber.Session";
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.IsEssential = true;
             });
             services.AddMvc(); //IMPORTANT TO ADD MANUALLY  

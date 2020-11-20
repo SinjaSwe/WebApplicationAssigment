@@ -32,12 +32,12 @@ namespace WebApplicationAssigment.Models
 
             else if (numberToGuess > guess)
             {
-                return "Try a lower number"; 
+                return "Try a higher number"; 
             }
 
             else
             {
-                return "Try a higher number"; 
+                return "Try a lower number"; 
             }
         }
     }
