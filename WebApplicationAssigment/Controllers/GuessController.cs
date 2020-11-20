@@ -20,8 +20,11 @@ namespace WebApplicationAssigment.Controllers
                 ViewBag.Result = HttpContext.Session.GetString("Result");
                 ViewBag.UserGuess = HttpContext.Session.GetInt32("UserGuess");
                 ViewBag.GeneratedNumber = HttpContext.Session.GetInt32("RandomNumber");
+             }
 
-            }
+            int numberToGuess = GuessingGameService.CreateRandomNumber();
+            HttpContext.Session.SetInt32("NumberToGuess", numberToGuess); 
+
             return View(); 
         }            
 
