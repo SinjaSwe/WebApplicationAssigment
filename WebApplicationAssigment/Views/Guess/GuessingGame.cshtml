@@ -17,11 +17,11 @@
 
 @ViewBag.GuessingGame
 
-<tbody>
+<div>
     @if (ViewBag.Result != null)
     {
         <p>@ViewBag.Result</p>
         <p>Guess:@ViewBag.Guess</p>
-        <p>Generated Number:@ViewBag.RandomNumber</p>
+        <p>NumberToGuess:@ViewBag.NumberToGuess</p>
     }
-</tbody>
+</div>

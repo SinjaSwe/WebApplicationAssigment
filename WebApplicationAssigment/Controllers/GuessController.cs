@@ -15,15 +15,19 @@ namespace WebApplicationAssigment.Controllers
         [Route("/guessGame")]
         public IActionResult GuessingGame()
         {
-            if (HttpContext.Session.GetString("View") != null && (HttpContext.Session.GetString("View")).CompareTo("Guess/CreateRandomNumber/Post")==0) 
+            if (HttpContext.Session.GetString("View") != null && (HttpContext.Session.GetString("View")).CompareTo("Guess/CreateRandomNumber/Post") == 0)
             {
                 ViewBag.Result = HttpContext.Session.GetString("Result");
-                ViewBag.UserGuess = HttpContext.Session.GetInt32("UserGuess");
-                ViewBag.GeneratedNumber = HttpContext.Session.GetInt32("RandomNumber");
-             }
+                ViewBag.UserGuess = HttpContext.Session.GetInt32("Guess");
+                ViewBag.GeneratedNumber = HttpContext.Session.GetInt32("NumberToGuess");
+            }
 
-            int numberToGuess = GuessingGameService.CreateRandomNumber();
-            HttpContext.Session.SetInt32("NumberToGuess", numberToGuess); 
+            else
+            {
+
+                int numberToGuess = GuessingGameService.CreateRandomNumber();
+                HttpContext.Session.SetInt32("NumberToGuess", numberToGuess);
+            }
 
             return View(); 
         }            
@@ -33,12 +37,12 @@ namespace WebApplicationAssigment.Controllers
         
         public IActionResult GuessingGame(int guess)
         {
-            int numberToGuess = Convert.ToInt32(HttpContext.Session.GetInt32("RandomNumber"));
+            int numberToGuess = Convert.ToInt32(HttpContext.Session.GetInt32("NumberToGuess"));
             String result = GuessingGameService.CheckGuess(guess, numberToGuess);
 
             HttpContext.Session.SetString("Result", result);
             HttpContext.Session.SetInt32("Guess", guess);
-            HttpContext.Session.SetString("View", "Guess/RandomNumber/Post");
+            HttpContext.Session.SetString("View", "Guess/NumberToGuess/Post");
 
             return RedirectToAction(nameof(GuessingGame));
         }
