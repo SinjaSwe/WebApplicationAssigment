@@ -35,7 +35,6 @@ namespace WebApplicationAssigment.Controllers
 
             HttpContext.Session.SetString("Result", result);
             HttpContext.Session.SetInt32("Guess", guess);
-
             HttpContext.Session.SetString("View", "Guess/RandomNumber/Post");
 
             return RedirectToAction(nameof(GuessingGame));

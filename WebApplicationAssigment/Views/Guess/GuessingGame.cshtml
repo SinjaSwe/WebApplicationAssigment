@@ -4,7 +4,7 @@
     ViewBag.Title = "GuessingGame";
 }
 
-<h2>Want to have some fun? Try to guess a randomly selected number between 1 and 100</h2>
+<h2>Want to have some fun? Guess a randomly selected number between 1 and 100</h2>
 
 <p>Please input your guess below</p>
 
@@ -15,7 +15,7 @@
     <input type="submit" value="Submit Number" />
 </form>
 
-@ViewBag.GuessingGame;
+@ViewBag.GuessingGame
 
 <tbody>
     @if (ViewBag.Result != null)
